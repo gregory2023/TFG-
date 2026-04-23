@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUFACE — Mi Panel</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <span class="logo">YOUFACE</span>
+    <div class="nav-links">
+        <a href="/registro-biometrico">Registro biometrico</a>
+        <a href="/logout">Cerrar sesion</a>
+    </div>
+</nav>
+
+<div class="container-wide">
+    <div class="welcome-bar">
+        <h2 th:text="'Bienvenido/a, ' + ${alumno.nombre}">Bienvenido/a</h2>
+        <p>Portal de examenes — Universidad Alfonso X el Sabio</p>
+    </div>
+
+    <h1>Mis examenes pendientes</h1>
+    <p class="subtitle">Debes registrar tus datos biometricos antes de cada examen.</p>
+
+    <table class="table-examenes">
+        <thead>
+        <tr>
+            <th>Asignatura</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Aula</th>
+            <th>Estado biometrico</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Acceso a Datos</td>
+            <td>15/05/2026</td>
+            <td>09:00</td>
+            <td>Aula 204</td>
+            <td>
+                <span th:if="${alumno.foto1Url}" class="badge badge-registrado">Registrado</span>
+                <span th:unless="${alumno.foto1Url}" class="badge badge-pendiente">Pendiente</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Sistemas Distribuidos</td>
+            <td>20/05/2026</td>
+            <td>11:00</td>
+            <td>Aula 101</td>
+            <td>
+                <span th:if="${alumno.foto1Url}" class="badge badge-registrado">Registrado</span>
+                <span th:unless="${alumno.foto1Url}" class="badge badge-pendiente">Pendiente</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Inteligencia Artificial</td>
+            <td>25/05/2026</td>
+            <td>16:00</td>
+            <td>Aula 310</td>
+            <td>
+                <span th:if="${alumno.foto1Url != null}" class="badge badge-registrado">Registrado</span>
+                <span th:if="${alumno.foto1Url == null}" class="badge badge-pendiente">Pendiente</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="divider"/>
+
+    <div class="aviso-privacidad">
+        <strong>Aviso de privacidad y proteccion de datos</strong><br><br>
+        Los datos biometricos (fotografias faciales) que proporciones seran utilizados
+        exclusivamente para tu identificacion durante los examenes presenciales mediante
+        el sistema YOUFACE.<br><br>
+        <strong>Una vez finalizados todos tus examenes, tus datos biometricos seran
+            eliminados de forma permanente e irrecuperable de nuestros servidores.</strong>
+        Ningun dato facial sera compartido con terceros ni utilizado para ningun otro fin.
+        El tratamiento de estos datos se realiza conforme al Reglamento General de
+        Proteccion de Datos (RGPD).
+    </div>
+
+    <br>
+    <a href="/registro-biometrico">
+        <button class="btn" th:if="${alumno.foto1Url == null}">Registrar mis datos biometricos</button>
+        <button class="btn btn-secondary" th:if="${alumno.foto1Url != null}">Actualizar mis fotos</button>
+    </a>
+</div>
+</body>
+</html>

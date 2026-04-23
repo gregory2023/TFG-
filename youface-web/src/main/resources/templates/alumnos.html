@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUFACE — Alumnos Registrados</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+<body>
+<h1>YOUFACE — Alumnos Registrados</h1>
+
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+    <thead style="background:#1F3864; color:white;">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>DNI</th>
+        <th>Email</th>
+        <th>Fecha Registro</th>
+        <th>Fotos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumno : ${alumnos}">
+        <td th:text="${alumno.id}"></td>
+        <td th:text="${alumno.nombre}"></td>
+        <td th:text="${alumno.dni}"></td>
+        <td th:text="${alumno.email}"></td>
+        <td th:text="${alumno.fechaRegistro}"></td>
+        <td>
+            <a th:if="${alumno.foto1Url}" th:href="${alumno.foto1Url}" target="_blank">Foto 1</a>
+            <a th:if="${alumno.foto2Url}" th:href="${alumno.foto2Url}" target="_blank">Foto 2</a>
+            <a th:if="${alumno.foto3Url}" th:href="${alumno.foto3Url}" target="_blank">Foto 3</a>
+            <a th:if="${alumno.foto4Url}" th:href="${alumno.foto4Url}" target="_blank">Foto 4</a>
+            <a th:if="${alumno.foto5Url}" th:href="${alumno.foto5Url}" target="_blank">Foto 5</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/">Volver al registro</a>
+</body>
+</html>

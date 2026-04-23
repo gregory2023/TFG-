@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUFACE — Iniciar Sesion</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <span class="logo">YOUFACE</span>
+    <div class="nav-links">
+        <a href="/login">Iniciar sesion</a>
+        <a href="/signup">Registrarse</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Iniciar sesion</h1>
+    <p class="subtitle">Accede con tu cuenta UAX</p>
+
+    <div th:if="${error}" class="alert-error" th:text="${error}"></div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="alumno@uax.es" required/>
+        </div>
+        <div class="form-group">
+            <label>Contrasena</label>
+            <input type="password" name="password" placeholder="••••••••" required/>
+        </div>
+        <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <div class="link-text">
+        ¿No tienes cuenta? <a href="/signup">Registrate aqui</a>
+    </div>
+</div>
+</body>
+</html>

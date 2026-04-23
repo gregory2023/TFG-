@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUFACE — Crear Cuenta</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <span class="logo">YOUFACE</span>
+    <div class="nav-links">
+        <a href="/login">Iniciar sesion</a>
+        <a href="/signup">Registrarse</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Crear cuenta</h1>
+    <p class="subtitle">Registro de alumno UAX</p>
+
+    <div th:if="${error}" class="alert-error" th:text="${error}"></div>
+
+    <form th:action="@{/signup}" method="post">
+        <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" name="nombre" placeholder="Gregory Canon" required/>
+        </div>
+        <div class="form-group">
+            <label>DNI</label>
+            <input type="text" name="dni" placeholder="12345678A" required/>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="alumno@uax.es" required/>
+        </div>
+        <div class="form-group">
+            <label>Contrasena</label>
+            <input type="password" name="password" placeholder="••••••••" required/>
+        </div>
+        <button type="submit" class="btn">Crear cuenta</button>
+    </form>
+
+    <div class="link-text">
+        ¿Ya tienes cuenta? <a href="/login">Inicia sesion</a>
+    </div>
+</div>
+</body>
+</html>

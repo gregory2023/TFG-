@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUFACE — Registro Biometrico</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <span class="logo">YOUFACE</span>
+    <div class="nav-links">
+        <a href="/panel">Mi panel</a>
+        <a href="/logout">Cerrar sesion</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Registro biometrico</h1>
+    <p class="subtitle">Sube 5 fotos tuyas para que el sistema te identifique durante el examen.</p>
+
+    <div th:if="${error}" class="alert-error" th:text="${error}"></div>
+    <div th:if="${exito}" class="alert-success">
+        <strong>✓ Datos biometricos registrados correctamente.</strong><br>
+        Tu ID de registro es: <strong th:text="${alumno.id}"></strong><br>
+        <small>Guarda este ID como comprobante de tu registro biometrico.</small>
+    </div>
+
+    <form th:action="@{/registrar}" method="post" enctype="multipart/form-data" th:object="${alumno}">
+        <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" th:field="*{nombre}" placeholder="Gregory Canon" required/>
+        </div>
+        <div class="form-group">
+            <label>DNI</label>
+            <input type="text" th:field="*{dni}" placeholder="12345678A" required/>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" th:field="*{email}" placeholder="alumno@uax.es" required/>
+        </div>
+        <div class="form-group">
+            <label>Foto 1 — de frente</label>
+            <input type="file" name="foto1" accept="image/*" required/>
+            <p class="foto-info">Mira directo a la camara con buena iluminacion.</p>
+        </div>
+        <div class="form-group">
+            <label>Foto 2 — ligeramente a la derecha</label>
+            <input type="file" name="foto2" accept="image/*" required/>
+        </div>
+        <div class="form-group">
+            <label>Foto 3 — ligeramente a la izquierda</label>
+            <input type="file" name="foto3" accept="image/*" required/>
+        </div>
+        <div class="form-group">
+            <label>Foto 4 — sonriendo</label>
+            <input type="file" name="foto4" accept="image/*" required/>
+        </div>
+        <div class="form-group">
+            <label>Foto 5 — con luz diferente</label>
+            <input type="file" name="foto5" accept="image/*" required/>
+        </div>
+        <button type="submit" class="btn">Registrar mis datos biometricos</button>
+    </form>
+</div>
+</body>
+</html>
