@@ -7,3 +7,4 @@ yolov8n.pt
 # Spring / Java
 target/
 *.log
+youface-web/src/main/resources/application.properties

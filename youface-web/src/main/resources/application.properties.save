@@ -1,0 +1,24 @@
+# Servidor
+server.port=8080
+
+# Base de datos H2 (local para desarrollo)
+spring.datasource.url=jdbc:h2:mem:youface
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# Hibernate
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.h2.console.enabled=true
+
+# Subida de archivos
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=30MB
+
+# AWS S3
+spring.application.name=youface
+aws.accessKey=${AWS_ACCESS_KEY}
+aws.secretKey=${AWS_SECRET_KEY}
+aws.region=eu-north-1
+aws.s3.bucket=tfg-vision-capturas
